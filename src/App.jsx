@@ -1,14 +1,14 @@
-import React, { useState } from "react"
-import NavBar from "./components/NavBar"
+﻿import React, { useState } from 'react'
+import NavBar from './components/NavBar'
 
 function App() {
-  const [activeSection, setActiveSection] = useState("home")
+  const [activeSection, setActiveSection] = useState('home')
 
   const scrollToSection = (sectionId) => {
     setActiveSection(sectionId)
     const element = document.getElementById(sectionId)
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
@@ -20,8 +20,8 @@ function App() {
         <section id="home" className="section home-section">
           <div className="section-content">
             <h1>Welcome to My Portfolio</h1>
-            <p>Hi, I am a passionate developer creating amazing web experiences</p>
-            <button onClick={() => scrollToSection("projects")} className="cta-button">
+            <p>Hi, I'm a passionate developer creating amazing web experiences</p>
+            <button onClick={() => scrollToSection('projects')} className="cta-button">
               View My Work
             </button>
           </div>
@@ -30,7 +30,7 @@ function App() {
         <section id="about" className="section about-section">
           <div className="section-content">
             <h2>About Me</h2>
-            <p>I am a full-stack developer with expertise in React, Node.js, and modern web technologies. I love building user-friendly applications and solving complex problems.</p>
+            <p>I'm a full-stack developer with expertise in React, Node.js, and modern web technologies. I love building user-friendly applications and solving complex problems.</p>
           </div>
         </section>
 
@@ -71,7 +71,7 @@ function App() {
         <section id="contact" className="section contact-section">
           <div className="section-content">
             <h2>Get In Touch</h2>
-            <p>I would love to hear from you! Feel free to reach out.</p>
+            <p>I'd love to hear from you! Feel free to reach out.</p>
             <form className="contact-form">
               <input type="text" placeholder="Your Name" required />
               <input type="email" placeholder="Your Email" required />
