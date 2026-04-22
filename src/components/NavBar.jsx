@@ -27,7 +27,7 @@ function NavBar({ onNavClick, activeSection }) {
         <div className="navbar-brand">
           <a href="#home" onClick={() => handleNavClick('home')} className="logo">
             <span className="logo-icon">{"<"}</span>
-            Portfolio
+            DevByAlieu
             <span className="logo-icon">{"/"}</span>
           </a>
         </div>
