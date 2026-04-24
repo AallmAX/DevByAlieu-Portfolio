@@ -1,5 +1,6 @@
-﻿import React, { useState } from 'react'
+import React, { useState } from 'react'
 import './NavBar.css'
+import navbarLogo from '../assets/DevByAlieu_Navbar.png'
 
 function NavBar({ onNavClick, activeSection }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -26,9 +27,16 @@ function NavBar({ onNavClick, activeSection }) {
       <div className="navbar-container">
         <div className="navbar-brand">
           <a href="#home" onClick={() => handleNavClick('home')} className="logo">
-            <span className="logo-icon">{"<"}</span>
-            DevByAlieu
-            <span className="logo-icon">{"/"}</span>
+            <img 
+              src={navbarLogo}
+              alt="DevByAlieu" 
+              className="navbar-logo"
+              onError={(e) => {
+                e.target.style.display = 'none'
+                e.target.nextSibling.style.display = 'inline'
+              }}
+            />
+            <span style={{display: 'none'}}>DevByAlieu</span>
           </a>
         </div>
 
