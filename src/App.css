@@ -199,8 +199,8 @@ body {
 /* Projects */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
   margin-top: 28px;
 }
 
@@ -208,15 +208,37 @@ body {
   position: relative;
   isolation: isolate;
   border-radius: 18px;
-  padding: 18px;
+  padding: 22px;
   background: linear-gradient(
       135deg,
       color-mix(in srgb, var(--card) 92%, transparent),
-      color-mix(in srgb, var(--card) 70%, transparent)
-    );
+      color-mix(in srgb, var(--card) 68%, transparent)
+    ),
+    radial-gradient(800px 280px at 0% 0%, rgba(255, 255, 255, 0.08), transparent 60%);
   backdrop-filter: blur(10px);
   box-shadow: 0 12px 32px rgba(11, 18, 32, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+/* Per-tile accent colors (used for hover + chips) */
+.project-card.tint-violet {
+  --tile-a: rgba(124, 58, 237, 0.95);
+  --tile-b: rgba(168, 85, 247, 0.85);
+}
+
+.project-card.tint-cyan {
+  --tile-a: rgba(6, 182, 212, 0.95);
+  --tile-b: rgba(34, 197, 94, 0.75);
+}
+
+.project-card.tint-amber {
+  --tile-a: rgba(245, 158, 11, 0.95);
+  --tile-b: rgba(239, 68, 68, 0.72);
+}
+
+.project-card.tint-teal {
+  --tile-a: rgba(20, 184, 166, 0.95);
+  --tile-b: rgba(6, 182, 212, 0.85);
 }
 
 .project-card::before {
@@ -227,9 +249,9 @@ body {
   border-radius: inherit;
   background: linear-gradient(
     135deg,
-    rgba(124, 58, 237, 0.5),
-    rgba(6, 182, 212, 0.38),
-    rgba(245, 158, 11, 0.22)
+    color-mix(in srgb, var(--tile-a, rgba(124, 58, 237, 0.55)) 65%, transparent),
+    color-mix(in srgb, var(--tile-b, rgba(6, 182, 212, 0.4)) 55%, transparent),
+    rgba(255, 255, 255, 0.12)
   );
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
@@ -246,10 +268,14 @@ body {
   border-radius: inherit;
   background: radial-gradient(
       750px 240px at 0% 0%,
-      rgba(124, 58, 237, 0.12),
+      color-mix(in srgb, var(--tile-a, rgba(124, 58, 237, 0.12)) 25%, transparent),
       transparent 60%
     ),
-    radial-gradient(720px 280px at 100% 20%, rgba(6, 182, 212, 0.1), transparent 55%);
+    radial-gradient(
+      720px 280px at 100% 20%,
+      color-mix(in srgb, var(--tile-b, rgba(6, 182, 212, 0.1)) 22%, transparent),
+      transparent 55%
+    );
   opacity: 0.6;
   pointer-events: none;
   z-index: -2;
@@ -288,6 +314,34 @@ body {
   opacity: 0.9;
 }
 
+.project-card:hover {
+  animation: tile-wiggle 0.55s ease-in-out;
+  background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--tile-a) 18%, var(--card)),
+      color-mix(in srgb, var(--tile-b) 14%, var(--card))
+    ),
+    radial-gradient(900px 320px at 30% 10%, rgba(255, 255, 255, 0.1), transparent 60%);
+}
+
+@keyframes tile-wiggle {
+  0% {
+    transform: translateY(-3px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-3px) rotate(-0.6deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(0.7deg);
+  }
+  75% {
+    transform: translateY(-3px) rotate(-0.4deg);
+  }
+  100% {
+    transform: translateY(-3px) rotate(0deg);
+  }
+}
+
 .project-card h3 {
   margin: 0 0 0.5rem;
   font-size: 1.28rem;
@@ -309,16 +363,16 @@ body {
 }
 
 .tech-chip {
-  border: 1px solid var(--border);
+  border: 1px solid color-mix(in srgb, var(--tile-a, rgba(124, 58, 237, 0.35)) 35%, var(--border));
   border-radius: 999px;
   padding: 6px 10px;
   font-weight: 800;
   font-size: 0.82rem;
-  background: color-mix(in srgb, var(--card) 88%, transparent);
+  background: color-mix(in srgb, var(--tile-a, rgba(124, 58, 237, 0.14)) 14%, var(--card));
 }
 
 .project-card:hover .tech-chip {
-  border-color: color-mix(in srgb, rgba(124, 58, 237, 0.45) 55%, var(--border));
+  border-color: color-mix(in srgb, var(--tile-a) 32%, var(--border));
 }
 
 .project-actions {
@@ -334,6 +388,36 @@ body {
 .project-card:hover .project-actions {
   transform: translateY(0);
   opacity: 1;
+}
+
+.view-project {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  padding: 10px 4px;
+  opacity: 0.9;
+}
+
+.view-project-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--tile-a, rgba(124, 58, 237, 0.22)) 22%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tile-a, rgba(124, 58, 237, 0.35)) 35%, var(--border));
+}
+
+.project-card:hover .view-project-icon {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--tile-a) 30%, transparent),
+    color-mix(in srgb, var(--tile-b) 22%, transparent)
+  );
 }
 
 .button-link {

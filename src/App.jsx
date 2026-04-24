@@ -69,32 +69,45 @@ function App() {
 
   const projects = [
     {
-      title: 'Portfolio Website',
-      description: 'A modern, animated portfolio with smooth navigation and responsive design.',
-      tech: ['React', 'Vite', 'CSS'],
+      title: 'E‑Commerce Platform',
+      description: 'A full‑stack shopping experience with cart flow, checkout, and product management.',
+      tech: ['React', 'Node.js', 'MongoDB'],
       links: {
         live: '#',
         code: '#',
       },
       featured: true,
+      tint: 'violet',
     },
     {
-      title: 'Full‑Stack App',
-      description: 'A full‑stack project with authentication, API integration, and a clean UI.',
-      tech: ['React', 'Node.js', 'REST API'],
+      title: 'Task Management App',
+      description: 'A collaborative task tracker with real‑time updates, teams, and activity history.',
+      tech: ['React', 'Firebase', 'Tailwind'],
       links: {
         live: '#',
         code: '#',
       },
+      tint: 'cyan',
     },
     {
-      title: 'UI Components',
-      description: 'Reusable UI components focused on accessibility, performance, and design consistency.',
-      tech: ['Design System', 'Responsive', 'UX'],
+      title: 'Weather Dashboard',
+      description: 'Real‑time weather with forecasts, search, and location‑based results.',
+      tech: ['JavaScript', 'API Integration', 'CSS'],
       links: {
         live: '#',
         code: '#',
       },
+      tint: 'amber',
+    },
+    {
+      title: 'Portfolio Generator',
+      description: 'A dynamic portfolio builder with customizable templates and quick publishing.',
+      tech: ['React', 'TypeScript', 'Styled Components'],
+      links: {
+        live: '#',
+        code: '#',
+      },
+      tint: 'teal',
     },
   ]
 
@@ -176,14 +189,17 @@ function App() {
         {/* Projects Section */}
         <section id="projects" className="section projects-section">
           <div className="section-content">
-            <h2>Projects</h2>
+            <h2>Featured Projects</h2>
             <p className="section-lead">
               A few projects that highlight my approach to clean UI, solid engineering, and smooth user experience.
             </p>
 
             <div className="projects-grid">
               {projects.map((project) => (
-                <div key={project.title} className={`project-card ${project.featured ? 'featured' : ''}`}>
+                <div
+                  key={project.title}
+                  className={`project-card ${project.featured ? 'featured' : ''} tint-${project.tint}`}
+                >
                   <div className="project-card-top">
                     <h3>{project.title}</h3>
                     {project.featured ? <span className="badge">Featured</span> : null}
@@ -199,11 +215,11 @@ function App() {
                   </div>
 
                   <div className="project-actions">
-                    <a className="button-link" href={project.links.live} target="_blank" rel="noreferrer">
-                      Live Demo
-                    </a>
-                    <a className="button-link ghost" href={project.links.code} target="_blank" rel="noreferrer">
-                      Source Code
+                    <a className="view-project" href={project.links.live} target="_blank" rel="noreferrer">
+                      View Project
+                      <span className="view-project-icon" aria-hidden="true">
+                        ↗
+                      </span>
                     </a>
                   </div>
                 </div>
