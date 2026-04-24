@@ -30,6 +30,13 @@
   gap: 0.5rem;
 }
 
+.navbar-logo {
+  height: 38px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .navbar-menu {
   display: flex;
   align-items: center;

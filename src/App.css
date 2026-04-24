@@ -1,3 +1,186 @@
+/* Global / Theme */
+:root {
+  --primary-color: #9333ea;
+  --secondary-color: #14b8a6;
+  --text-color: #111827;
+  --muted-text-color: #6b7280;
+  --surface: #ffffff;
+  --surface-muted: #f9fafb;
+  --border: rgba(17, 24, 39, 0.12);
+  --shadow-lg: 0 20px 45px rgba(17, 24, 39, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    "Noto Sans", "Liberation Sans", sans-serif;
+  color: var(--text-color);
+  background: var(--surface);
+}
+
+/* App Layout */
+.app {
+  min-height: 100vh;
+}
+
+.main-content {
+  padding-top: 70px; /* fixed navbar height */
+}
+
+.section {
+  padding: 96px 20px;
+}
+
+.section:nth-child(even) {
+  background: var(--surface-muted);
+}
+
+.section-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-content h2 {
+  font-size: 2.4rem;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-content p {
+  margin: 0;
+  color: var(--muted-text-color);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* Buttons */
+.cta-button,
+.submit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  box-shadow: 0 14px 30px rgba(147, 51, 234, 0.22);
+}
+
+.cta-button:hover,
+.submit-button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+  box-shadow: 0 18px 45px rgba(17, 24, 39, 0.18);
+}
+
+.cta-button:active,
+.submit-button:active {
+  transform: translateY(0);
+}
+
+/* Projects */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.project-card {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 25px rgba(17, 24, 39, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.project-card p {
+  margin: 0;
+  color: var(--muted-text-color);
+  line-height: 1.6;
+}
+
+/* Skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.skill-item {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 12px;
+  text-align: center;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Contact */
+.contact-form {
+  margin-top: 24px;
+  display: grid;
+  gap: 12px;
+  max-width: 560px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 14px;
+  font-size: 1rem;
+  outline: none;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: rgba(147, 51, 234, 0.5);
+  box-shadow: 0 0 0 4px rgba(147, 51, 234, 0.12);
+}
+
+.submit-button {
+  width: fit-content;
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  color: white;
+}
+
 /* Home Section - Full Background with Brand Image */
 .home-section {
   background-image: url('./assets/DevByAlieu_Brand.png');
@@ -170,6 +353,14 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .home-container {
     flex-direction: column;
     text-align: center;
@@ -219,6 +410,18 @@
 }
 
 @media (max-width: 768px) {
+  .section {
+    padding: 72px 18px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .home-content h1 {
     font-size: 3rem;
   }
