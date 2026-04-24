@@ -36,6 +36,37 @@ function App() {
     setAnimateHome(true)
   }, [])
 
+  // Track active section while scrolling
+  useEffect(() => {
+    const sectionIds = ['home', 'about', 'projects', 'skills', 'contact']
+    const elements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean)
+
+    if (elements.length === 0) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0))
+
+        if (visible[0]?.target?.id) {
+          setActiveSection(visible[0].target.id)
+        }
+      },
+      {
+        root: null,
+        // Slightly below the navbar so sections count as "active" when content is visible.
+        rootMargin: '-80px 0px -55% 0px',
+        threshold: [0.12, 0.2, 0.35, 0.5, 0.65],
+      },
+    )
+
+    elements.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+
   const projects = [
     {
       title: 'Portfolio Website',

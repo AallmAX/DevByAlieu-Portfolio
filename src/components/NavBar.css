@@ -19,6 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
 }
 
 .navbar-brand .logo {
@@ -46,7 +47,7 @@
 .navbar-list {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 0.35rem;
   margin: 0;
   padding: 0;
 }
@@ -55,9 +56,11 @@
   color: var(--text-color);
   text-decoration: none;
   font-weight: 500;
-  padding: 0.5rem 0;
+  padding: 10px 12px;
+  border-radius: 999px;
   position: relative;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  outline: none;
 }
 
 .navbar-link::after {
@@ -69,10 +72,12 @@
   height: 2px;
   background: #9333ea;
   transition: width 0.3s ease;
+  display: none;
 }
 
 .navbar-link:hover {
   color: #9333ea;
+  background: color-mix(in srgb, var(--surface-muted) 85%, transparent);
 }
 
 .navbar-link:hover::after,
@@ -83,6 +88,18 @@
 .navbar-link.active {
   color: #9333ea;
   font-weight: 600;
+  background: color-mix(in srgb, rgba(124, 58, 237, 0.14) 75%, transparent);
+  border: 1px solid color-mix(in srgb, rgba(124, 58, 237, 0.35) 70%, transparent);
+}
+
+.navbar-link:focus-visible {
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.22);
+}
+
+.theme-toggle:focus-visible,
+.hamburger:focus-visible {
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.22);
+  border-radius: 14px;
 }
 
 /* Hamburger Menu */
@@ -180,5 +197,6 @@
     display: block;
     padding: 15px 20px;
     margin: 5px 20px;
+    border-radius: 16px;
   }
 }
