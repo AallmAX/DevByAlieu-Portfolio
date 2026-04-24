@@ -1,9 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './NavBar.css'
 import navbarLogo from '../assets/DevByAlieu_Navbar.png'
 
 function NavBar({ onNavClick, activeSection }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [theme, setTheme] = useState('light')
+
+  useEffect(() => {
+    const stored = localStorage.getItem('theme')
+    const initial = stored === 'dark' || stored === 'light' ? stored : 'light'
+    setTheme(initial)
+    document.documentElement.setAttribute('data-theme', initial)
+  }, [])
+
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark'
+    setTheme(next)
+    localStorage.setItem('theme', next)
+    document.documentElement.setAttribute('data-theme', next)
+  }
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -55,6 +70,16 @@ function NavBar({ onNavClick, activeSection }) {
             ))}
           </ul>
         </div>
+
+        <button
+          type="button"
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+        >
+          {theme === 'dark' ? 'Light' : 'Dark'}
+        </button>
 
         <button
           className={`hamburger ${isMenuOpen ? 'active' : ''}`}

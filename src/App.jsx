@@ -6,6 +6,14 @@ function App() {
   const [activeSection, setActiveSection] = useState('home')
   const [animateHome, setAnimateHome] = useState(false)
 
+  const profile = {
+    name: 'Alieu Jallow',
+    role: 'Full‑Stack Developer',
+    tagline: 'I build fast, modern web apps with clean UI, smooth UX, and reliable code.',
+    location: 'Based in',
+    locationValue: 'The Gambia',
+  }
+
   const scrollToSection = (sectionId) => {
     setActiveSection(sectionId)
     const element = document.getElementById(sectionId)
@@ -27,6 +35,37 @@ function App() {
   useEffect(() => {
     setAnimateHome(true)
   }, [])
+
+  const projects = [
+    {
+      title: 'Portfolio Website',
+      description: 'A modern, animated portfolio with smooth navigation and responsive design.',
+      tech: ['React', 'Vite', 'CSS'],
+      links: {
+        live: '#',
+        code: '#',
+      },
+      featured: true,
+    },
+    {
+      title: 'Full‑Stack App',
+      description: 'A full‑stack project with authentication, API integration, and a clean UI.',
+      tech: ['React', 'Node.js', 'REST API'],
+      links: {
+        live: '#',
+        code: '#',
+      },
+    },
+    {
+      title: 'UI Components',
+      description: 'Reusable UI components focused on accessibility, performance, and design consistency.',
+      tech: ['Design System', 'Responsive', 'UX'],
+      links: {
+        live: '#',
+        code: '#',
+      },
+    },
+  ]
 
   return (
     <div className="app">
@@ -57,14 +96,22 @@ function App() {
             
             {/* Right Side - Sliding Text */}
             <div className={`home-content ${animateHome ? 'animate-slide-in' : ''}`}>
-              <h1 className={animateHome ? 'animate-slide-in' : ''}>Welcome to My Portfolio</h1>
-              <p className={animateHome ? 'animate-slide-in delay-1' : ''}>Hi, I'm a passionate developer creating amazing web experiences</p>
-              <button 
-                onClick={() => scrollToSection('projects')} 
-                className={animateHome ? 'cta-button animate-slide-in delay-2' : 'cta-button'}
-              >
-                View My Work
-              </button>
+              <p className={animateHome ? 'home-kicker animate-slide-in delay-1' : 'home-kicker'}>
+                {profile.location} <span className="home-kicker-strong">{profile.locationValue}</span>
+              </p>
+              <h1 className={animateHome ? 'animate-slide-in' : ''}>
+                {profile.name}
+                <span className="home-title-accent"> — {profile.role}</span>
+              </h1>
+              <p className={animateHome ? 'animate-slide-in delay-1' : ''}>{profile.tagline}</p>
+              <div className={animateHome ? 'home-cta-row animate-slide-in delay-2' : 'home-cta-row'}>
+                <button onClick={() => scrollToSection('projects')} className="cta-button">
+                  View Projects
+                </button>
+                <button onClick={() => scrollToSection('contact')} className="cta-button secondary">
+                  Contact Me
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -73,7 +120,25 @@ function App() {
         <section id="about" className="section about-section">
           <div className="section-content">
             <h2>About Me</h2>
-            <p>I'm a full-stack developer with expertise in React, Node.js, and modern web technologies. I love building user-friendly applications and solving complex problems.</p>
+            <p>
+              I’m a full‑stack developer focused on building polished, user‑friendly products. I enjoy turning ideas into fast,
+              responsive interfaces and backing them with reliable APIs and clean architecture.
+            </p>
+
+            <div className="highlights-grid">
+              <div className="highlight-card">
+                <div className="highlight-title">Frontend</div>
+                <div className="highlight-text">React, component systems, responsive layouts, accessible UI</div>
+              </div>
+              <div className="highlight-card">
+                <div className="highlight-title">Backend</div>
+                <div className="highlight-text">Node.js, REST APIs, auth, databases, integrations</div>
+              </div>
+              <div className="highlight-card">
+                <div className="highlight-title">Delivery</div>
+                <div className="highlight-text">Performance, clean code, maintainability, great UX details</div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -81,19 +146,37 @@ function App() {
         <section id="projects" className="section projects-section">
           <div className="section-content">
             <h2>Projects</h2>
+            <p className="section-lead">
+              A few projects that highlight my approach to clean UI, solid engineering, and smooth user experience.
+            </p>
+
             <div className="projects-grid">
-              <div className="project-card">
-                <h3>Project One</h3>
-                <p>A modern web application built with React and Node.js</p>
-              </div>
-              <div className="project-card">
-                <h3>Project Two</h3>
-                <p>Full-stack application with real-time features</p>
-              </div>
-              <div className="project-card">
-                <h3>Project Three</h3>
-                <p>Mobile-responsive design with stunning animations</p>
-              </div>
+              {projects.map((project) => (
+                <div key={project.title} className={`project-card ${project.featured ? 'featured' : ''}`}>
+                  <div className="project-card-top">
+                    <h3>{project.title}</h3>
+                    {project.featured ? <span className="badge">Featured</span> : null}
+                  </div>
+                  <p>{project.description}</p>
+
+                  <div className="tech-chips">
+                    {project.tech.map((t) => (
+                      <span key={t} className="tech-chip">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="project-actions">
+                    <a className="button-link" href={project.links.live} target="_blank" rel="noreferrer">
+                      Live Demo
+                    </a>
+                    <a className="button-link ghost" href={project.links.code} target="_blank" rel="noreferrer">
+                      Source Code
+                    </a>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -117,7 +200,22 @@ function App() {
         <section id="contact" className="section contact-section">
           <div className="section-content">
             <h2>Get In Touch</h2>
-            <p>I'd love to hear from you! Feel free to reach out.</p>
+            <p>
+              I’m open to internships, freelance work, and full‑time roles. The fastest way to reach me is by email or LinkedIn.
+            </p>
+
+            <div className="contact-links">
+              <a className="contact-link" href="mailto:your.email@example.com">
+                Email
+              </a>
+              <a className="contact-link" href="#" target="_blank" rel="noreferrer">
+                LinkedIn
+              </a>
+              <a className="contact-link" href="#" target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+            </div>
+
             <form className="contact-form">
               <input type="text" placeholder="Your Name" required />
               <input type="email" placeholder="Your Email" required />
@@ -126,6 +224,13 @@ function App() {
             </form>
           </div>
         </section>
+
+        <footer className="footer">
+          <div className="footer-inner">
+            <div className="footer-brand">DevByAlieu</div>
+            <div className="footer-meta">© {new Date().getFullYear()} Alieu Jallow. Built with React + Vite.</div>
+          </div>
+        </footer>
       </main>
     </div>
   )
