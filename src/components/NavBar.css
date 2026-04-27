@@ -5,10 +5,27 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: color-mix(in srgb, var(--surface) 92%, transparent);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+  background: rgba(251, 251, 255, 0.72);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 
+    0 4px 30px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.8), 
+    transparent
+  );
 }
 
 .navbar-container {
@@ -77,7 +94,8 @@
 
 .navbar-link:hover {
   color: #9333ea;
-  background: color-mix(in srgb, var(--surface-muted) 85%, transparent);
+  background: rgba(124, 58, 237, 0.12);
+  backdrop-filter: blur(4px);
 }
 
 .navbar-link:hover::after,
@@ -88,8 +106,9 @@
 .navbar-link.active {
   color: #9333ea;
   font-weight: 600;
-  background: color-mix(in srgb, rgba(124, 58, 237, 0.14) 75%, transparent);
-  border: 1px solid color-mix(in srgb, rgba(124, 58, 237, 0.35) 70%, transparent);
+  background: rgba(124, 58, 237, 0.18);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(124, 58, 237, 0.25);
 }
 
 .navbar-link:focus-visible {
@@ -154,6 +173,7 @@
 .theme-toggle:hover {
   transform: translateY(-1px);
   box-shadow: 0 12px 25px rgba(17, 24, 39, 0.12);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* Mobile Styles */
@@ -167,13 +187,18 @@
     top: 70px;
     left: 0;
     right: 0;
-    background: color-mix(in srgb, var(--surface) 92%, transparent);
-    backdrop-filter: blur(10px);
+    background: rgba(251, 251, 255, 0.85);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(147, 51, 234, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  [data-theme='dark'] .navbar-menu {
+    background: rgba(7, 8, 22, 0.9);
   }
 
   .navbar-menu.active {

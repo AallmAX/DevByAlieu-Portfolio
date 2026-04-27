@@ -170,15 +170,15 @@ function App() {
             </p>
 
             <div className="highlights-grid">
-              <div className="highlight-card">
+              <div className="highlight-card glass-card">
                 <div className="highlight-title">Frontend</div>
                 <div className="highlight-text">React, component systems, responsive layouts, accessible UI</div>
               </div>
-              <div className="highlight-card">
+              <div className="highlight-card glass-card">
                 <div className="highlight-title">Backend</div>
                 <div className="highlight-text">Node.js, REST APIs, auth, databases, integrations</div>
               </div>
-              <div className="highlight-card">
+              <div className="highlight-card glass-card">
                 <div className="highlight-title">Delivery</div>
                 <div className="highlight-text">Performance, clean code, maintainability, great UX details</div>
               </div>
@@ -198,7 +198,7 @@ function App() {
               {projects.map((project) => (
                 <div
                   key={project.title}
-                  className={`project-card ${project.featured ? 'featured' : ''} tint-${project.tint}`}
+                  className={`project-card glass-card ${project.featured ? 'featured' : ''} tint-${project.tint}`}
                 >
                   <div className="project-card-top">
                     <h3>{project.title}</h3>
@@ -233,12 +233,11 @@ function App() {
           <div className="section-content">
             <h2>Skills</h2>
             <div className="skills-grid">
-              <div className="skill-item">React</div>
-              <div className="skill-item">Node.js</div>
-              <div className="skill-item">JavaScript</div>
-              <div className="skill-item">CSS</div>
-              <div className="skill-item">Web Design</div>
-              <div className="skill-item">Responsive Design</div>
+              {['React', 'Node.js', 'JavaScript', 'CSS', 'Web Design', 'Responsive Design'].map((skill) => (
+                <div key={skill} className="skill-item glass-card">
+                  {skill}
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -246,29 +245,45 @@ function App() {
         {/* Contact Section */}
         <section id="contact" className="section contact-section">
           <div className="section-content">
-            <h2>Get In Touch</h2>
-            <p>
-              I’m open to internships, freelance work, and full‑time roles. The fastest way to reach me is by email or LinkedIn.
-            </p>
+            <h2>Contact Me</h2>
+            <p>Tell me about your next project.</p>
 
             <div className="contact-links">
-              <a className="contact-link" href="mailto:your.email@example.com">
-                Email
-              </a>
-              <a className="contact-link" href="#" target="_blank" rel="noreferrer">
-                LinkedIn
-              </a>
-              <a className="contact-link" href="#" target="_blank" rel="noreferrer">
-                GitHub
+              <button 
+                className="contact-link copy-email-btn" 
+                onClick={() => {
+                  navigator.clipboard.writeText('alieujallow@gmail.com')
+                  alert('Email copied to clipboard!')
+                }}
+              >
+                <span className="copy-icon">📋</span>
+                Copy Email
+              </button>
+              <a className="contact-link whatsapp-link" href="https://wa.me/220" target="_blank" rel="noreferrer">
+                <span className="whatsapp-icon">💬</span>
+                WhatsApp
               </a>
             </div>
 
-            <form className="contact-form">
-              <input type="text" placeholder="Your Name" required />
-              <input type="email" placeholder="Your Email" required />
-              <textarea placeholder="Your Message" rows="5" required></textarea>
-              <button type="submit" className="submit-button">Send Message</button>
-            </form>
+            <div className="contact-social-media">
+              <h3>Social Media</h3>
+              <ul>
+                <li><a href="https://linkedin.com/in/" target="_blank" rel="noreferrer">LinkedIn ↗</a></li>
+                <li><a href="https://github.com/" target="_blank" rel="noreferrer">GitHub ↗</a></li>
+                <li><a href="https://dribbble.com/" target="_blank" rel="noreferrer">Dribbble ↗</a></li>
+                <li><a href="https://gitlab.com/" target="_blank" rel="noreferrer">GitLab ↗</a></li>
+              </ul>
+            </div>
+
+            <div className="contact-write-me">
+              <h3>Write Me & We'll Talk</h3>
+              <ul>
+                <li><a href="https://wa.me/220" target="_blank" rel="noreferrer">WhatsApp ↗</a></li>
+                <li><a href="https://m.me/" target="_blank" rel="noreferrer">Messenger ↗</a></li>
+                <li><a href="https://t.me/" target="_blank" rel="noreferrer">Telegram ↗</a></li>
+                <li><a href="https://instagram.com/" target="_blank" rel="noreferrer">Instagram ↗</a></li>
+              </ul>
+            </div>
           </div>
         </section>
 
