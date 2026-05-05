@@ -1,31 +1,39 @@
-﻿/* Animations - Slide In from Right */
+﻿/* Animations - Smooth Slide In */
 .animate-slide-in {
   opacity: 0;
-  transform: translateX(100px);
-  animation: slideInRight 1s ease-out forwards;
+  transform: translate3d(36px, 18px, 0) scale(0.985);
+  filter: blur(6px);
+  animation: slideInSoft 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-@keyframes slideInRight {
+@keyframes slideInSoft {
   0% {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translate3d(36px, 18px, 0) scale(0.985);
+    filter: blur(6px);
+  }
+  65% {
+    opacity: 1;
+    transform: translate3d(-4px, 0, 0) scale(1);
+    filter: blur(0);
   }
   100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
   }
 }
 
 .delay-1 {
-  animation-delay: 0.3s;
+  animation-delay: 0.18s;
 }
 
 .delay-2 {
-  animation-delay: 0.6s;
+  animation-delay: 0.32s;
 }
 
 .delay-3 {
-  animation-delay: 0.9s;
+  animation-delay: 0.46s;
 }
 
 /* Avatar Fade In */
