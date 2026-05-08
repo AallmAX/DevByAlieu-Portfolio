@@ -7,6 +7,8 @@ import cssIcon from './assets/icons/css-icon.svg'
 import nodeIcon from './assets/icons/nodejs-icon.svg'
 import htmlIcon from './assets/icons/html-icon.svg'
 import gitIcon from './assets/icons/git-icon.svg'
+import emailIcon from './assets/icons/email-icon.svg'
+import whatsappIcon from './assets/icons/whatsapp-icon.svg'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
@@ -405,14 +407,11 @@ function App() {
                 }}
               >
                 <div className="card-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                  </svg>
+                  <img src={emailIcon} alt="Email icon" />
                 </div>
                 <div className="card-content">
                   <span className="card-label">Email</span>
-                  <span className="card-value">alieujallow@gmail.com</span>
+                  <span className="card-value">alieu289@gmail.com</span>
                 </div>
                 <span className="card-action">Click to copy</span>
               </button>
@@ -420,9 +419,7 @@ function App() {
               {/* WhatsApp Card */}
               <a className="contact-card whatsapp-card" href="https://wa.me/220" target="_blank" rel="noreferrer">
                 <div className="card-icon whatsapp-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.195.194 1.652.149.458-.075 1.648-.774 1.88-1.722.237-.949.237-1.763.173-1.763-.158-.001-1.098-.246-2.354-.879zm-5.591 3.504c-1.405-1.405-3.276-2.196-5.076-2.196-3.987 0-7.235 3.239-7.235 7.235 0 1.935 1.522 3.529 3.529 3.529.963 0 1.871-.249 2.641-.703l2.996 2.924c.327.315.775.472 1.223.472 1.355 0 2.461-1.105 2.816-2.461.355-1.356.237-2.615.118-3.529l-.118-.118zm4.504-7.379c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.195.194 1.652.149.458-.075 1.648-.774 1.88-1.722.237-.949.237-1.763.173-1.763-.158-.001-1.098-.246-2.354-.879z"/>
-                  </svg>
+                  <img src={whatsappIcon} alt="WhatsApp icon" />
                 </div>
                 <div className="card-content">
                   <span className="card-label">WhatsApp</span>
